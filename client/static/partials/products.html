@@ -1,0 +1,30 @@
+<div ng-controller='ProductsController'>
+  <div class='options'>
+    <div class='search'>
+      <form>
+        <input class='input' type='text' ng-model='product_name.search' placeholder='search...'>
+        <input type='submit' ng-click='searchProduct()' value='Filter'>
+      </form>
+    </div>
+    <p><u><b>Add a new product</b></u></p>
+    <form>
+      <p>Name:<br>
+      <input class='input' type='text' id='name' name='name' ng-model='new_product.name' placeholder='product name'></p>
+      <p>Image(url):<br>
+      <input class='input' type='text' name='image_url' ng-model='new_product.image' placeholder='http://...'></p>
+      <p>Description:<br>
+      <textarea name='description' ng-model='new_product.description' rows='5' cols='22'></textarea></p>
+      <p>Initial Quantity:<br>
+      <select ng-options='n for n in [] | range:1:200' ng-model='new_product.quantity'></select></p>
+      <input type='submit' ng-click='addProduct()' value='Add Product'></p>
+    </form>
+    <p class='error' ng-bind='error.message'></p>
+  </div>
+  <div class='product'>
+    <div class='item' ng-repeat = 'product in products | filter:search | orderBy:"name"'>
+      <img ng-src='{{product.image}}' alt='Display product image' height='100' width='100'><br>
+      <span ng-bind='product.name'></span><br>(<span ng-bind='product.quantity'></span> left)<br>
+      <a ng-click='removeProduct(product)'><button>Remove</button></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard of my SPA | Store</title>
+  </head>
+  <body>
+    <div class='products' ng-controller='ProductsController'>
+      <div class='home_search'>
+        <form>
+          <input class='input' type='text' ng-model='product_name.search' placeholder='search...'>
+          <input type='submit' ng-click='searchProduct()' value='Filter'>
+        </form>
+      </div>
+      <div class='right'>
+        <div class='home_product'>
+          <div class='home_item' ng-repeat='product in products.slice(0, 4) | filter:search | orderBy:"name"'>
+            <img ng-src='{{product.image}}' alt='Display product image' height='100' width='100'><br>
+            <span ng-bind='product.name'></span><br>(<span ng-bind='product.quantity'></span> left)
+          </div>
+          <p align=center><a href='#/products'>show more...</a></p>
+        </div>
+        <div class='orders' ng-controller='OrdersController'>
+          <div>
+            <u><b>Recent Orders</b></u>
+            <div class='home_order' ng-repeat='order in orders | limitTo:-4 | orderBy:"createdAt":true'>
+              {{order.name}} purchased {{order.quantity}} {{order.product}} (<span am-time-ago='order.createdAt'></span> ago)
+            </div>
+            <p align=center><a href='#/orders'>show all orders...</a></p>
+          </div>
+        </div>
+        <div class='customers' ng-controller='CustomersController'>
+          <div>
+            <u><b>New Customers</b></u>
+            <div class='home_customer' ng-repeat='customer in customers | limitTo:-4 | orderBy:"createdAt":true'>
+              {{customer.name}} joined the store (<span am-time-ago='customer.createdAt'></span> ago)
+            </div>
+            <p align=center><a href='#/customers'>show all customers...</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

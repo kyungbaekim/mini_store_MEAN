@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app='store_app'>
+  <head>
+    <title>Mini MEAN Store</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
+    <script type="text/javascript" src='http://code.jquery.com/jquery-2.2.2.js'></script>
+    <script type="text/javascript" src='script.js'></script>
+    <style>
+      .wrapper{
+        width: 700px;
+        margin: 0px auto;
+      }
+      .list{
+        width: 500px;
+      }
+      .list table, .list tr, .list th, .list td{
+        border: 1px solid grey;
+      }
+      .list table{
+        border-collapse: collapse;
+      }
+      .list th{
+        background-color: lightgrey;
+      }
+      .add{
+        margin-bottom: 20px;
+      }
+      .list th, .list td{
+        padding: 3px;
+        text-align: center;
+      }
+      .body{
+        margin-top: 20px;
+      }
+      .error{
+        font-size: 12px;
+        color: red;
+        margin: 0px;
+      }
+      .search{
+        text-align: right;
+        margin: 20px 0px 5px;
+      }
+      .options{
+        width: 150px;
+      }
+      .input, .options textarea{
+        width: 145px;
+      }
+      .options, .product{
+        display: inline-block;
+        vertical-align: top;
+      }
+      .product{
+        margin: 20px 0px 0px 20px;
+        width: 480px;
+      }
+      .item{
+        text-align: center;
+        display: inline-block;
+        width: 110px;
+        height: 200px;
+        margin-right: 10px;
+      }
+      .home_item{
+        text-align: center;
+        display: inline-block;
+        width: 110px;
+        height: 150px;
+        margin-right: 10px;
+      }
+      .item button{
+        margin: 10px;
+      }
+      img{
+        border: 1px solid silver;
+        padding: 2px;
+      }
+      .home_search, .right{
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 20px;
+      }
+      .home_search{
+        width: 150px;
+        text-align: right;
+      }
+      .home_product{
+        width: 480px;
+        margin: 0px 0px 0px 20px;
+      }
+      .orders, .customers{
+        margin: 20px 20px;
+      }
+      .home_order, .home_customer{
+        margin-left: 20px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='wrapper'>
+      <a href="#/dashboard">Dashboard</a> | <a href="#/products">Products</a> | <a href="#/orders">Orders</a> | <a href="#/customers">Customers</a> | <a href="#/settings">Settings</a>
+      <div class='body' ng-view=""></div>
+    </div>
+  </body>
+</html>

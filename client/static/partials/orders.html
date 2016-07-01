@@ -1,0 +1,23 @@
+<div ng-controller='OrdersController'>
+  <div class='top'>
+    <p><u><b>Add a new order</b></u></p>
+    <form>
+      <p>Customer: <select ng-model='new_order.customer' ng-options='customer.name for customer in customers'></select></p>
+      <p>Order: <select ng-model='new_order.product' ng-options='product.name for product in products'></select>&nbsp;<select ng-model='new_order.quantity' ng-options='n for n in [] | range:1:20'></select>
+      <input type='submit' ng-click='addOrder()' value='Place an order'></p>
+    </form>
+  </div>
+  <div class='list'>
+    <div class='search'>
+      <input type='text' ng-model='search.name' placeholder='filter...'>
+    </div>
+    <table>
+      <tr>
+        <th width=130>Customer Name</th><th width=100>Product</th><th width=70>Quantity</th><th width=120>Ordered Date</th><th>Actions</th>
+      </tr>
+      <tr ng-repeat='order in orders | filter:search | orderBy:"createAt":true'>
+        <td ng-bind='order.name'></td><td ng-bind='order.product'></td><td ng-bind='order.quantity'></td><td ng-bind='order.createdAt | date:"MMMM d yyyy"'></td><td><a ng-click='removeOrder(order)'><button>Delete</button></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
